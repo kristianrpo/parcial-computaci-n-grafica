@@ -45,6 +45,7 @@ public class Shader {
                 // Compute R, the reflected light vector
                 double dot2 = Vector4.dotProduct(Lneg, N);
                 Vector4 R = Lneg.subtract(N.timesScalar(2 * dot2));
+                
                 Vector4 V = Vector4.subtract(Scene.camera.cameraPosition, point);   // View vector
                 V.normalize();
                 double dot3 = Vector4.dotProduct(R, V);

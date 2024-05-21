@@ -2,8 +2,8 @@ package geometry;
 import math.Vector4;
 
 public class Ray {
-    Vector4 origin;
-    Vector4 direction;
+    public Vector4 origin;
+    public Vector4 direction;
 
     public Ray(Vector4 origin, Vector4 end) {
         this.origin = origin;
