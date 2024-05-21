@@ -46,7 +46,7 @@ public class Scene {
 
     public static void readScene(String fileName) {
         try {
-            Scanner in = new Scanner(new File("/home/kristian/Escritorio/parcial/RayTracer Completado/RayTracer/RayTracer/escena.txt"));
+            Scanner in = new Scanner(new File("C:\\Users\\Usuario\\OneDrive\\Escritorio\\proyectofinal grafica\\parcial-computacion-grafica\\RayTracer\\escena.txt"));
             /*
              * // Number of vertices and vertices
              * int n = in.nextInt();
@@ -154,7 +154,7 @@ public class Scene {
         Solution solution = null;
         for (IntersectableObject object : io) {
             Solution s = object.intersect(ray);
-            if (s != null) {
+            if (s != null  && s.t > 0.001) {
                 if (solution == null) {
                     // First solution found
                     solution = s;
