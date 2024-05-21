@@ -46,7 +46,7 @@ public class Scene {
 
     public static void readScene(String fileName) {
         try {
-            Scanner in = new Scanner(new File("C:\\Users\\Usuario\\OneDrive\\Escritorio\\proyectofinal grafica\\parcial-computacion-grafica\\RayTracer\\escena.txt"));
+            Scanner in = new Scanner(new File("RayTracer/escena.txt"));
             /*
              * // Number of vertices and vertices
              * int n = in.nextInt();
