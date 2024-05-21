@@ -71,8 +71,10 @@ public class Scene {
                 double kA = in.nextDouble();
                 double kD = in.nextDouble();
                 double kS = in.nextDouble();
+                double kO = in.nextDouble();
+                double kR = in.nextDouble();
                 int nExponent = in.nextInt();
-                Scene.materials.add(new Material(kA, kD, kS, nExponent));
+                Scene.materials.add(new Material(kA, kD, kS, kO, kR,nExponent));
             }
             // read the color index of the ambient light
             Scene.ambientLight = in.nextInt();
