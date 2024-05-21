@@ -73,6 +73,8 @@ public class Scene {
                 double kS = in.nextDouble();
                 double kO = in.nextDouble();
                 double kR = in.nextDouble();
+                System.out.println(kO);
+                System.out.println(kR);
                 int nExponent = in.nextInt();
                 Scene.materials.add(new Material(kA, kD, kS, kO, kR,nExponent));
             }
@@ -178,9 +180,16 @@ public class Scene {
             // zBuffer translates them to screen coordinates
             Vector4 point = solution.intersectionPoint;
             Vector4 normal = solution.normal;
+            Vector4 rayDirection = ray.direction;
             Colour colour = solution.colour;
             Material material = solution.material;
-            // See if the point is in the shadow of an object
+            rayDirection.normalize();
+            Vector4 reflectedVector = rayDirection.subtract(normal.timesScalar(2 * Vector4.dotProduct(rayDirection, normal)));
+            Ray reflectedRay = new Ray(point, Vector4.add(point, reflectedVector));
+            Colour colourReflection = Scene.intersectRay(reflectedRay);
+            colourReflection = colourReflection.timesScalar(material.kR);
+            colour = colour.timesScalar(material.kO);
+            colour.acumColor(colourReflection);
             pixelColor = Shader.computeLocalIllumination(point, normal, colour, material);
         }
         return pixelColor;
